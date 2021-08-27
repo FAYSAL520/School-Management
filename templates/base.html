@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>{% block title %} {% endblock %}</title>
+
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="x-icon" href="/media/favicon.png">
+
+       <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'css/feathericon.min.css' %}">
+
+		<link rel="stylesheet" href="{% static 'plugins/morris/morris.css' %}">
+
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+	<style>
+	 {% block style %}
+
+     {% endblock %}
+
+	</style>
+
+
+
+    </head>
+    <body>
+
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+
+			<!-- Header -->
+            <div class="header">
+
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="/media/logo.png" alt="Logo">
+					</a>
+					<a href="index.html" class="logo logo-small">
+						<img src="/media/logo-small.png" alt="Logo" width="30" height="30">
+					</a>
+                </div>
+				<!-- /Logo -->
+
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+				<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+
+
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img">{{user.username}}</span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+
+								<div class="user-text">
+									<h6>{{user.username}}</h6>
+									<p class="text-muted mb-0">Administrator</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href="{% url 'handleLogout' %}">Logout</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+
+				</ul>
+				<!-- /Header Right Menu -->
+
+            </div>
+			<!-- /Header -->
+
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="menu-title">
+								<span>Main</span>
+							</li>
+							<li>
+								<a href="/"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+							</li>
+							<li>
+								<a href="{% url 'students' %}"><i class="fe fe-user-plus"></i> <span>Students</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fe fe-activity"></i> <span>Student Attendance </span> </a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span>Student Information</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li ><a href="{% url 'student_class' %}">Class</a></li>
+									<li ><a href="{% url 'student_gender' %}">Gender</a></li>
+									<li ><a href="{% url 'student_section' %}">Section</a></li>
+									<li ><a href="{% url 'student_group' %}">Group</a></li>
+									<li ><a href="{% url 'student_blood' %}">Blood</a></li>
+									<li ><a href="{% url 'student_subject' %}">Subjects</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="{% url 'teachers' %}"><i class="fe fe-user"></i> <span>Teachers</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span>Teacher Information</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li ><a href="{% url 'teacher_gender' %}">Gender</a></li>
+									<li><a href="{% url 'teacher_section' %}">Section</a></li>
+									<li><a href="{% url 'teacher_group' %}">Group</a></li>
+									<li><a href="{% url 'teacher_blood' %}">Blood</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#"><i class="fe fe-activity"></i> <span>Teacher Attendance </span> </a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="fe fe-document"></i> <span>Exam & Mark</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li ><a href="{% url 'student_exam' %}">Exams</a></li>
+									<li><a href="{% url 'student_mark' %}">Marks</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="profile.html"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+							</li>
+							<li>
+								<a href="settings.html"><i class="fe fe-vector"></i> <span>Settings</span></a>
+							</li>
+
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+
+			{% if messages %}
+				{% for massage in messages %}
+					<div class="alert alert-{{massage.tags}} alert-dismissible fade show" role="alert">
+					    <strong>{{massage}}</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+					</div>
+				{% endfor %}
+				{% endif %}
+
+
+                {% block content %}
+
+
+
+                {% endblock %}
+
+
+			</div>
+			<!-- /Page Wrapper -->
+
+        </div>
+		<!-- /Main Wrapper -->
+
+		<!-- jQuery -->
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+		<!-- Slimscroll JS -->
+        <script src="{% static 'plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		<!-- Datatables JS -->
+		<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+		<script src="{% static 'plugins/datatables/datatables.min.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script  src="{% static 'js/script.js' %}"></script>
+
+		<script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+		<script src="{% static 'plugins/morris/morris.min.js' %}"></script>
+		<script src="{% static 'js/chart.morris.js' %}"></script>
+
+
+
+
+    </body>
+
+</html>

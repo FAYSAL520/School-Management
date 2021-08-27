@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Section List {% endblock %}
+
+
+{% block style %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="content container-fluid">
+<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-12">
+								<h3 class="page-title">List of Section</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="#">Teacher</a></li>
+									<li class="breadcrumb-item"><a href="javascript:(0);">Section</a></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+	               <a class="btn btn-danger mb-4" href="{% url 'student_section_add' %}">Add Blood</a>
+<!--	               <a class="btn btn-danger mb-4" data-toggle="modal" href="#edit_invoice_report">Add Teacher</a>-->
+
+					<!-- /Page Header -->
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<div class="table-responsive">
+										<table class="datatable table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Action</th>
+
+												</tr>
+											</thead>
+											<tbody>
+
+                                               {% for Section in section %}
+											    <tr>
+													<td>
+														<h2 class="table-avatar">
+															<a href="#">{{Section.section}} </a>
+														</h2>
+													</td>
+													<td>
+														<a class="btn btn-sm bg-success-light mr-2" href="{% url 'student_section_change' Section.pk %}"><i class="fe fe-pencil"></i></a>&nbsp;
+
+														<a class="btn btn-sm bg-danger-light" href="{% url 'studentdeletesection' Section.id %}"> <i class="fe fe-trash"></i></a> &nbsp;
+
+													</td>
+												</tr>
+                                                {% endfor %}
+
+											</tbody>
+										</table>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                 </div>
+
+
+
+
+
+{% endblock %}
+

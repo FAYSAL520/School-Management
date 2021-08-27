@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Teacher Profile {% endblock %}
+
+{% block content %}
+
+
+
+ <div class="content container-fluid">
+
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col">
+								<h3 class="page-title">Profile</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+									<li class="breadcrumb-item"><a href="{% url 'teachers' %}">Teachers List</a></li>
+									<li class="breadcrumb-item active">{{teacher.0.name}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="profile-header">
+								<div class="row align-items-center">
+									<div class="col-auto profile-image">
+										<a href="#">
+											<img class="rounded-circle" alt="User Image" src="{{ teacher.0.teacher_image.url }}">
+										</a>
+									</div>
+									<div class="col ml-md-n2 profile-user-info">
+										<h4 class="user-name mb-0">{{teacher.0.name}}</h4>
+										<h6 class="text-muted">{{teacher.0.email}}</h6>
+										<div class="user-Location"><i class="fa fa-map-marker"></i> {{teacher.0.state}}, {{teacher.0.country}}</div>
+
+									</div>
+
+								</div>
+							</div>
+							<div class="profile-menu">
+
+							</div>
+							<div class="tab-content profile-tab-cont">
+
+								<!-- Personal Details Tab -->
+								<div class="tab-pane fade show active" id="per_details_tab">
+
+									<!-- Personal Details -->
+									<div class="profile-menu">
+													<h5 class="card-title d-flex justify-content-between">
+														<span>Personal Details</span>
+													</h5>
+													</div>
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="card">
+												<div class="card-body">
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Name</p>
+														<p class="col-sm-10">{{teacher.0.name}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Bio</p>
+														<p class="col-sm-10">{{teacher.0.designation}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Date of Birth</p>
+														<p class="col-sm-10">{{teacher.0.date_of_birth}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Joining Birth</p>
+														<p class="col-sm-10">{{teacher.0.joining_date}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Gender</p>
+														<p class="col-sm-10">{{teacher.0.gender}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Section</p>
+														<p class="col-sm-10">{{teacher.0.section}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Group</p>
+														<p class="col-sm-10">{{teacher.0.group}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Blood</p>
+														<p class="col-sm-10">{{teacher.0.blood}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Religion</p>
+														<p class="col-sm-10">{{teacher.0.Religion}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Email ID</p>
+														<p class="col-sm-10">{{teacher.0.email}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Mobile</p>
+														<p class="col-sm-10">{{teacher.0.phone}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">State</p>
+														<p class="col-sm-10">{{teacher.0.state}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Country</p>
+														<p class="col-sm-10">{{teacher.0.country}}</p>
+													</div>
+													<div class="row">
+														<p class="col-sm-2 text-muted text-sm-right mb-0">Address</p>
+														<p class="col-sm-10 mb-0">{{teacher.0.address}}
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /Personal Details -->
+
+								</div>
+								<!-- /Personal Details Tab -->
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+
+{% endblock %}

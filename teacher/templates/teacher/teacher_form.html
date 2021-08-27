@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Teacher Form {% endblock %}
+
+{% block content %}
+
+
+<!-- Page Wrapper -->
+        <div class="content container-fluid">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="page-title">Teacher From</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Teacher</a></li>
+                            <li class="breadcrumb-item active">Add Teacher</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Information Inputs</h4>
+                        </div>
+                        <div class="card-body">
+                        <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <table>
+                                {% for field in form %}
+                                    <div class="form-group row">
+                                    <label class="col-form-label col-md-2" >{{field.label}}</label>
+                                        <div class="col-md-10">
+                                         {{field}}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                <button type="submit" class="btn btn-danger">Save</button>&nbsp; &nbsp;
+                                <a class="btn btn-warning" href="{% url 'teachers' %}">Back</a>
+                            </table>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
